@@ -55,8 +55,6 @@ docs/_build/
 # Jupytor
 /.ipynb_checkpoints
 
-AkraradetSolution
-
 .DS_Store
 ._.DS_Store
 **/.DS_Store
@@ -77,7 +75,3 @@ data
 # Pipenv
 .venv
 Pipfile.lock
-
-# 05 - Signal Processing for EEG
-Lectures/05 - Signal Processing for EEG/dataset/*
-Lectures/me

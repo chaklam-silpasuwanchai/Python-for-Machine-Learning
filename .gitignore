@@ -72,6 +72,11 @@ data
 **/data
 **/data
 
+model
+._.model
+**/model
+**/model
+
 # Pipenv
 .venv
 Pipfile.lock

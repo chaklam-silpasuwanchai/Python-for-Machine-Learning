@@ -77,11 +77,6 @@ model
 **/model
 **/model
 
-solution
-._.solution
-**/solution
-**/solution
-
 # Pipenv
 .venv
 Pipfile.lock

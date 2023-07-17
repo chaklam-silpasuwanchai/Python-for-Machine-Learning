@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: python.Dockerfile
     volumes:
-      - ./:/code
+      - ./:/root/code
       - .vscode-server:/root/.vscode-server
   mlflow:
     image: akraradets/ait-ml-mlflow:2023

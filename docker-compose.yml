@@ -8,6 +8,7 @@ services:
       dockerfile: python.Dockerfile
     volumes:
       - ./:/code
+      - .vscode-server:/root/.vscode-server
   mlflow:
     image: akraradets/ait-ml-mlflow:2023
     build: 
@@ -15,6 +16,8 @@ services:
       dockerfile: mlflow.Dockerfile
     volumes:
       - ./_mlflow:/mlflow
+    ports:
+      - 5000:5000
     # deploy:
     #   resources:
     #     reservations:

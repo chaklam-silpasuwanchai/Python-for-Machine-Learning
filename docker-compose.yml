@@ -3,6 +3,7 @@ version: '3.9'
 services:
   python:
     image: akraradets/ait-ml-python:2023
+    platform: linux/x86_64
     build: 
       context: .
       dockerfile: python.Dockerfile
@@ -11,6 +12,7 @@ services:
       - .vscode-server:/root/.vscode-server
   mlflow:
     image: akraradets/ait-ml-mlflow:2023
+    platform: linux/x86_64
     build: 
       context: .
       dockerfile: mlflow.Dockerfile

@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  dash:
+    command: python3 main.py
+    image: akraradets/ait-ml-dash:2023
+    platform: linux/x86_64
+    build: 
+      context: .
+      dockerfile: .Dockerfile
+    ports:
+      - 9001:80
+    volumes:
+      - ./code:/root/code
+      - ./.vscode-server:/root/.vscode-server
+    environment:
+      - HOST=0.0.0.0
+      - PORT=80

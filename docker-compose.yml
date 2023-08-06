@@ -20,10 +20,3 @@ services:
       - ./_mlflow:/mlflow
     ports:
       - 5000:5000
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - driver: nvidia
-    #           count: 1
-    #           capabilities: [gpu]

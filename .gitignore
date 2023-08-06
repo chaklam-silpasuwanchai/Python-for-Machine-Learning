@@ -88,4 +88,5 @@ Pipfile.lock
 
 _mlflow/*
 .vscode-server/*
+**/.vscode-server/*
 !.keeps

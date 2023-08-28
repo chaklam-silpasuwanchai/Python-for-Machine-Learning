@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   dash:
-    # command: python3 main.py
+    command: python3 main.py
     image: akraradets/ait-ml-dash:2023
     platform: linux/x86_64
     build: 

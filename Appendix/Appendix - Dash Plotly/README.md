@@ -9,3 +9,7 @@ docker compose up --build
 Access the app with http://localhost:9001
 
 Have fun.
+
+## Side bar
+
+I follow multipage with this https://dash.plotly.com/urls

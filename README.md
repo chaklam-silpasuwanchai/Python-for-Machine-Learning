@@ -11,16 +11,18 @@ This is the repository for the course Machine Learning at Asian Institute of Tec
 
 The course is structured into 6 big components:
 
-### 1. Case Study
+### 0. Case Study
 - Regression
 - Classification
   
-### 2. Regression
+### 1. Supervised Learning
+
+Regression
 - Gradient Descent
 - Stochastic and Mini-batch
 - Regularization 
 
-### 3.Classification
+Classification
 - Logistic Regression
 - Naive Bayes
 - K-Nearest Neighbors
@@ -30,14 +32,14 @@ The course is structured into 6 big components:
 - AdaBoost
 - Gradient Boosting
 
-### 4. Unsupervised Learning
+### 2. Unsupervised Learning
   - K-mean clustering
   - Gaussian mixture
   - Principle component analysis
   
-### 5. Deep Learning 
+### 3. Deep Learning 
   - Feedforward Neural Netork
   - Convolutional Neural Network
   - Recurrent Neural Network
 
-### 6. Reinforcement Learning
+### 4. Reinforcement Learning

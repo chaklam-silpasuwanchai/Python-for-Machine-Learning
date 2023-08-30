@@ -9,7 +9,7 @@ This is the repository for the course Machine Learning at Asian Institute of Tec
   
 ### Outline
 
-The course is structured into 6 big components:
+The course is structured into 5 big components:
 
 ### 0. Case Study
 - Regression

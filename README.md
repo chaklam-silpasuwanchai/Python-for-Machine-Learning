@@ -11,7 +11,7 @@ This is the repository for the course Machine Learning at Asian Institute of Tec
   
 ### Outline
 
-The course is structured into 4 big components:
+The course is structured into 6 big components:
 
 ### 1. Case Study
 - Regression
@@ -37,7 +37,9 @@ The course is structured into 4 big components:
   - Gaussian mixture
   - Principle component analysis
   
-### 5. Deep learning 
+### 5. Deep Learning 
   - Feedforward Neural Netork
   - Convolutional Neural Network
   - Recurrent Neural Network
+
+### 6. Reinforcement Learning

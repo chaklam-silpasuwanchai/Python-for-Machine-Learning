@@ -86,6 +86,7 @@ lab
 .venv
 Pipfile.lock
 
+_mlflow
 _mlflow/*
 .vscode-server/*
 **/.vscode-server/*

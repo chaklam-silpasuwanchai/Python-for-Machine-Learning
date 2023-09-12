@@ -86,6 +86,9 @@ layout =  dbc.Container([
     prevent_initial_call=True
 )
 def calculate_y_hardcode(x_1, x_2, submit):
+    print(x_1)
+    print(x_2)
+    print(submit)
     return x_1 + x_2
 
 @callback(

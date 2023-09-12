@@ -10,6 +10,6 @@ RUN pip3 install pandas
 RUN pip3 install numpy
 RUN pip3 install scikit-learn
 
-COPY ./code /root/code/
+COPY ./code /root/code
 
 CMD tail -f /dev/null

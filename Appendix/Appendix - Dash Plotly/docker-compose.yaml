@@ -1,39 +1,18 @@
-version: '3'
+version: '3.9'
+
 services:
-  dash-demo:
-    command: python3 main.py
-    image: akraradets/dash-demo:a2.2
-    ports:
-      - 8081:80
-    build:
+  dash:
+    command: tail -f /dev/null
+    image: akraradets/ait-ml-dash:2023
+    platform: linux/x86_64
+    build: 
       context: .
       dockerfile: .Dockerfile
-    # volumes:
-    #   - ./code:/root/code
+    ports:
+      - 9001:80
     volumes:
-      - ./models:/root/models
+      - ./code:/root/code
+      - ./.vscode-server:/root/.vscode-server
     environment:
       - HOST=0.0.0.0
       - PORT=80
-    labels:
-      # Allow Traefik to talk with your service
-      - traefik.enable=true
-      # Tell Traefik to use port 80
-      - traefik.http.services.dash-demo-st121413.loadbalancer.server.port=80
-      # This config you domain name. By default, your subdomain is dash-demo-st121413
-      # If you which to change the subdomain name, you uncomment the below configuration
-      - traefik.http.routers.dash-demo-st121413.rule=Host(`st121413-a2.ml2023.cs.ait.ac.th`)
-      # Below is for enable SSL.
-      - traefik.http.routers.dash-demo-st121413.tls=true
-      - traefik.http.routers.dash-demo-st121413.tls.certresolver=production
-      - traefik.http.routers.dash-demo-st121413.entrypoints=websecure
-    # This define network. You would need to keep it like this.
-    networks:
-      - default
-      - traefik_default
-
-# Keep it like this too.
-networks:
-  default:
-  traefik_default:
-    external: true

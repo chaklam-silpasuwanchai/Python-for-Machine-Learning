@@ -13,7 +13,7 @@ navbar = dbc.NavbarSimple(
         dbc.NavItem(dbc.NavLink("Home", href="/")),
         dbc.NavItem(dbc.NavLink("Model 1", href="/model1")),
     ],
-    brand="ML2023 Dash Example A2.1",
+    brand="ML2023 Dash Example A2 TUTORIAL",
     brand_href="/",
     color="primary",
     dark=True,

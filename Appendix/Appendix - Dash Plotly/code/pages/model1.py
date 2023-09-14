@@ -99,6 +99,16 @@ def calculate_y_hardcode(x_1, x_2, submit):
     prevent_initial_call=True
 )
 def calculate_y_model(x_1, x_2, submit):
+    pred = calculate_model(x_1,x_2)
+    coef = get_coeff()
+    return f" model said: {pred=} {coef_=}"
+
+def get_coeff():
+    from utils import load
+    model = load('./models/myModel.pickle')
+    return model.coef_
+
+def calculate_model(x_1,x_2):
     from utils import load
     import pandas as pd
     import numpy as np
@@ -106,5 +116,4 @@ def calculate_y_model(x_1, x_2, submit):
     X = np.array([x_1,x_2]).reshape(-1,2)
     X = pd.DataFrame(X, columns=['x1', 'x2']) 
     pred = model.predict(X)
-    return f" model said: {pred=} {model.coef_=}"
-
+    return pred

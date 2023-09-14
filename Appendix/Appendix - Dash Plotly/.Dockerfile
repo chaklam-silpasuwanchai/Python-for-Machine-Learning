@@ -10,6 +10,9 @@ RUN pip3 install pandas
 RUN pip3 install numpy
 RUN pip3 install scikit-learn
 
+# Testing module
+RUN pip3 install dash[testing]
+
 COPY ./code /root/code
 
 CMD tail -f /dev/null

@@ -1,0 +1,4 @@
+[submodule "Dash Plotly"]
+	path = Appendix/Appendix - Dash Plotly Modules
+	url = https://github.com/akraradets/Machine-Learning---Dash-Example-project.git
+	branch = main

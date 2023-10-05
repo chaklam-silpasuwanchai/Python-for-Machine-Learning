@@ -1,5 +1,5 @@
 # Goal
-In this course, we will be using Python as a learning language (of cause, this is Python for Data Science course). There are multiple ways you can get Python running in your machine. In this journey, I will show you my way to get Python running in your machine.
+We will guide you how we setup our PC ready for machine learning using Docker and Github.
 
 My setup consists of
 1. Windows 11 home (Operating System)

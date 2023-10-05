@@ -4,9 +4,9 @@ This is the repository for the course Machine Learning at Asian Institute of Tec
 
 ### Prerequisites
 
-1. Prerequisities/0 - Installation - For setting up tools for the course
-2. Prerequisities/0 - Course Notations - Understanding notations is the first step towards conquering math, so take a look and familiarized with it
-  
+- Visit our "Prerequisites" folder to review the materials, before attempting our ML course
+
+
 ### Outline
 
 The course is structured into 5 big components:

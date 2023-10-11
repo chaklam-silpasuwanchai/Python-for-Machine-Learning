@@ -44,3 +44,10 @@ Classification
 
 ### 4. Reinforcement Learning
   - Q-Learning
+
+## References:
+- Hastie, T., Tibshirani, R., and Friedman, J. **The Elements of Statistical Learning: Data Mining, Inference, and Prediction**, 2016 (2nd edition) (https://web.stanford.edu/~hastie/)
+- Deisenroth, M.P., Faisal A.A., Ong, C.S., **Mathematics for Machine Learning**, 2020 (1st edition) (https://mml-book.github.io/book/mml-book.pdf)
+- Weidman, S. **Deep Learning from Scratch: Building with Python from First Principles**, 2019 (1st edition) (https://github.com/SethHWeidman/DLFS_code)
+- Pytorch tutorials available online: https://pytorch.org/tutorials/
+- Nice visuals on CNN - https://github.com/vdumoulin/conv_arithmetic

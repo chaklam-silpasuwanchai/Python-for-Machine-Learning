@@ -44,6 +44,7 @@ Classification
 
 ### 4. Reinforcement Learning
   - Q-Learning
+  - PPO
 
 ### References:
 - Hastie, T., Tibshirani, R., and Friedman, J. **The Elements of Statistical Learning: Data Mining, Inference, and Prediction**, 2016 (2nd edition) (https://web.stanford.edu/~hastie/)

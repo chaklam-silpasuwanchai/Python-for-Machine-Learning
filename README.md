@@ -43,7 +43,6 @@ Classification
   - Recurrent Neural Network
 
 ### 4. Reinforcement Learning
-  - Q-Learning
   - PPO
 
 ### References:

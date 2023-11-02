@@ -1,6 +1,6 @@
 # Deploying machine learning model to production
 
-## Part 1: Fast API + Docker
+## Fast API + Docker
 
 Once we developed our ML model, we have to make it accessible by the public or at least the applications that require the prediction results.
 

@@ -173,8 +173,6 @@ Go to `http://127.0.0.1:5000/docs`.  Then try input some values and see the resp
 
 You can also try only three values, and see the errors.
 
-![swagger UI](figures/swagger.png)
-
 
 ### 7. Include dependencies
 

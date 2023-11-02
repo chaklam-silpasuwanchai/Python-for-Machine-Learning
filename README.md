@@ -6,6 +6,13 @@ This is the repository for the course Machine Learning at Asian Institute of Tec
 
 - Visit our "Prerequisites" folder to review the materials, before attempting our ML course
 
+### Technology stack
+- NumPy, Pandas, Matplotlib, Sklearn, PyTorch - for machine and deep learning
+- MLFlow - for experimenting
+- FastAPI - for exposing the models
+- Anything for frontend, e.g., Vue, ReAct, Angular, Jinja, Hugo, etc.
+- Anything for backend, e.g., Django, Flask
+- Docker for containerization, and Traefik for reverse proxy
 
 ### Outline
 
@@ -47,7 +54,6 @@ Classification
 
 ### References:
 - Hastie, T., Tibshirani, R., and Friedman, J. **The Elements of Statistical Learning: Data Mining, Inference, and Prediction**, 2016 (2nd edition) (https://web.stanford.edu/~hastie/)
-- Deisenroth, M.P., Faisal A.A., Ong, C.S., **Mathematics for Machine Learning**, 2020 (1st edition) (https://mml-book.github.io/book/mml-book.pdf)
-- Weidman, S. **Deep Learning from Scratch: Building with Python from First Principles**, 2019 (1st edition) (https://github.com/SethHWeidman/DLFS_code)
+- Ian Goodfellow., **Deep Learning**, 2016
 - Pytorch tutorials available online: https://pytorch.org/tutorials/
 - Nice visuals on CNN - https://github.com/vdumoulin/conv_arithmetic

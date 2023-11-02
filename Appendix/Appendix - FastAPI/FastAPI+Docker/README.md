@@ -183,7 +183,6 @@ Go to `http://127.0.0.1:5000/docs`.  Then try input some values and see the resp
 You can also try only three values, and see the errors.
 
 ![swagger UI](figures/swagger.png)
-<!-- ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/Appendix/Appendix - FastAPI/FastAPI+Docker/figures/swagger.png) -->
 
 
 ### 7. Include Dependencies
@@ -276,10 +275,3 @@ Go to `localhost:8000/docs`.  Now you can do the same thing.
 Note: if you are using docker machine, replace localhost with the IP address you found in `docker machine ip`
 
 ### Congrats!!
-
-In the next lab, let's deploy to **Heroku**, so everyone in the world can use your API.  Also let's try setup **CI/CD with github actions**.
-
-#### References
-
-- https://towardsdatascience.com/deploying-iris-classifications-with-fastapi-and-docker-7c9b83fdec3a
-- https://medium.com/analytics-vidhya/serve-a-machine-learning-model-using-sklearn-fastapi-and-docker-85aabf96729b

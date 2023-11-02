@@ -1,15 +1,5 @@
 # Deploying machine learning model to production
 
-Out there, it is very difficult to find one tutorial covering the whole process.  Thus, in this tutorial, you will be learning of making a full stack of machine learning applications consisting of the following tools.  But please be reminded that learning tools are not as important as learning the process and the philosophy behind.
-
-- FastAPI
-- Docker
-- Heroku
-- Github actions
-- Prometheus
-- Grafana
-- AWS EC2
-
 ## Part 1: Fast API + Docker
 
 Once we developed our ML model, we have to make it accessible by the public or at least the applications that require the prediction results.

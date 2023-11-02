@@ -72,12 +72,12 @@ Now, for `Windows` users.
 This command shows you the kernel and version. If you are not going to use WSL anymore, this is all we need.
 5. Launch `Docker Desktop` again.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/docker-desktop.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/docker-desktop.png)
 
 Tips:
 If you take a look in the `Task Manager`, there is a process named `Vmmem` running. This is the Docker process. Once the `Docker Desktop` is started, `Vmmem` will always be there. To fully shut the Docker, use `wsl --shutdown` command in the cmd/terminal. 
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/vmmem.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/vmmem.png)
 
 
 # <a name="2-vscode"></a>2. Visual Studio Code (vscode)
@@ -165,7 +165,7 @@ Sure you can find the base image with Python3 but for the sake of knowledge, we 
 ## Base Image
 To find what you want to start with, you have to search from the <a href="https://hub.docker.com/">Docker Hub</a>. Simply search for Ubuntu and find what you want. Here is the <a href="https://hub.docker.com/_/ubuntu">Ubuntu official Image</a>. 
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/docker-hub-ubuntu.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/docker-hub-ubuntu.png)
 
 If you just want an Ubuntu image, 
 ```
@@ -174,7 +174,7 @@ docker pull ubuntu
 
 But we want a specific version of Ubuntu. Click `Tags`.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/docker-hub-ubuntu-tags.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/docker-hub-ubuntu-tags.png)
 
 ```
 docker pull ubuntu:<tag>
@@ -247,11 +247,11 @@ services:
 
 Now, normally you will have to use `docker-compose up blah blah` to run the service. Here, I will use `VScode` to start the service. Before that, go to `Extension` and install `docker` extension into your `VScode`.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/vscode-docker-ext.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/vscode-docker-ext.png)
 
 Once you installed this extension, find your `docker-compose.yml` file, right click, and `Compose up`
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/vscode-docker-compose-up.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/vscode-docker-compose-up.png)
 
 ## Summary
 Now, all we have to do to get the container is
@@ -265,11 +265,11 @@ Now, all we have to do to get the container is
 
 Now, we want to access the Python in the container using VSCode. Luckily, things are already simplified. We have to install `Remote - Containers` extension in VSCode.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/vscode-remote-ext.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/vscode-remote-ext.png)
 
 Once we installed that, we can go to Docker menu, right-click on the target container, and select `Attach Visual Studio Code`.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/vscode-remote-container.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/vscode-remote-container.png)
 
 
 Now we have Python running. You are ready for this course.
@@ -433,7 +433,7 @@ Visit <a href="https://desktop.github.com/">GitHub Desktop</a> and download the 
 
 Once you have an account and login to it in the GitHub Desktop, click menu **File > New repository**
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/github-desktop-new-repo.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/github-desktop-new-repo.png)
 
 - **Name**: The repository name. This is the same name as your folder if you already created one.
 - **Description**: Can leave as blank.
@@ -529,13 +529,13 @@ DSAI-python
 
 If we go back to the GitHub Desktop, we will notice that GitHub Desktop already commit one change with message "Initial commit" and in the commit, our `Dataset` has already *added* into the repository. For my purpose, we want to exclude this from the repository.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/github-desktop-init-commit.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/github-desktop-init-commit.png)
 
 
 To fix this, we have to revert the commit and exclude the `Dataset` from the git using `.gitignore`.
 
 1. Revert the `Initial commit` by right-click on the commit and select `Undo commit...`
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/github-desktop-undo-commit.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/github-desktop-undo-commit.png)
 
 2. Create a file `.gitignore` in the root path.
 
@@ -563,7 +563,7 @@ DSAI-python
 
 3. Add `Dataset` into the `.gitignore` and save the file
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/github-desktop-ignore.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/github-desktop-ignore.png)
 
 Notice that all files in the Dataset folder is gone from the changes tab.
 
@@ -613,7 +613,7 @@ Note that this will not work with any file that is already added to repository. 
 
 Now you have a repository running in your local machine. You can make changes and create commits or make a new branch and merge as many as you desire. When you are ready, you can publish this repository to GitHub. To do that, click `Publish repository`.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/github-desktop-new-repo.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/github-desktop-new-repo.png)
 
 Here you can change the name of the repository (this will not affect the folder name in your local machine) and an option whether to make this repository a private or not. Once done choosing, just click `Publish repository`. Done~~!!
 

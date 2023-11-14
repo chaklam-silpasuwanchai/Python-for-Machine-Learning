@@ -89,7 +89,7 @@ $ sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
 
 2. Check `Add Python 3.8 to PATH` option and `Install Now`.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/python-windows-install-64.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/python-windows-install-64.png)
 
 3. Veryify that `python` is installed with `pip` using your `cmd`
 ```
@@ -421,7 +421,7 @@ $ pip3 install jupyter
 ```
 If you receive the following message.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-path.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/jupyter-path.png)
 
 You have to add `PATH` of the executable scripts.
 
@@ -444,11 +444,11 @@ $ pip3 install jupyter
 ```
 jupyter notebook
 ```
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-home.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/jupyter-home.png)
 
 3. Notice that when you try to create a new file there is a `python3` option. This option will run the code using the global environment. Therefore, you will need to add pythonDSAI into the jupyter before we can use it.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-new.png)  
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/jupyter-new.png)  
 
 Activate pythonDSAI environment and add the environment into jupyter
 
@@ -484,4 +484,4 @@ Installed kernelspec pythonDSAI in /home/<your username>/.local/share/jupyter/ke
 
 4. Restart the jupyter notebook and you should have `pythonDSAI` environment.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-new-pythonDSAI.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/jupyter-new-pythonDSAI.png)

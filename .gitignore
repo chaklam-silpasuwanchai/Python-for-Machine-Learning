@@ -93,3 +93,5 @@ _mlflow/*
 !.keeps
 
 /code/.pytest_cache
+
+exam

@@ -2,6 +2,8 @@
 
 This is the repository for the course Machine Learning at Asian Institute of Technology.
 
+Corresponding YT:  https://www.youtube.com/watch?v=KnP5n8TSJc4&list=PLqL-7eLmqd9ViCe07M6WiCVyaWJRc_plF
+
 ### Prerequisites
 
 - Visit our "Prerequisites" folder to review the materials, before attempting our ML course

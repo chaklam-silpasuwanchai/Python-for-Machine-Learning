@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:444c3c75a69eee3a5f95c173ee5606a9670bb7266725a70709cff60a6d11b782"
+content_hash = "sha256:e3a64c857161ca6da514fd6e49d27e16b65c0523d6c52814274fda0e0709a774"
 
 [[metadata.targets]]
 requires_python = "==3.10.*"
@@ -154,6 +154,7 @@ version = "1.2.2"
 requires_python = ">=3.7"
 summary = "Backport of PEP 654 (exception groups)"
 groups = ["dev"]
+marker = "python_version < \"3.11\""
 files = [
     {file = "exceptiongroup-1.2.2-py3-none-any.whl", hash = "sha256:3111b9d131c238bec2f8f516e123e14ba243563fb135d3fe885990585aa7795b"},
     {file = "exceptiongroup-1.2.2.tar.gz", hash = "sha256:47c2edf7c6738fafb49fd34290706d1a1a2f4d1c6df275526b62cbb4aa5393cc"},
@@ -953,6 +954,17 @@ files = [
 ]
 
 [[package]]
+name = "setuptools"
+version = "72.2.0"
+requires_python = ">=3.8"
+summary = "Easily download, build, install, upgrade, and uninstall Python packages"
+groups = ["default"]
+files = [
+    {file = "setuptools-72.2.0-py3-none-any.whl", hash = "sha256:f11dd94b7bae3a156a95ec151f24e4637fb4fa19c878e4d191bfb8b2d82728c4"},
+    {file = "setuptools-72.2.0.tar.gz", hash = "sha256:80aacbf633704e9c8bfa1d99fa5dd4dc59573efcf9e4042c13d3bcef91ac2ef9"},
+]
+
+[[package]]
 name = "six"
 version = "1.16.0"
 requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
@@ -1091,7 +1103,7 @@ name = "triton"
 version = "3.0.0"
 summary = "A language and compiler for custom Deep Learning operations"
 groups = ["default"]
-marker = "platform_system == \"Linux\" and platform_machine == \"x86_64\""
+marker = "platform_system == \"Linux\" and platform_machine == \"x86_64\" and python_version < \"3.13\""
 dependencies = [
     "filelock",
 ]

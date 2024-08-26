@@ -36,4 +36,4 @@ services:
 volumes:
   mlflow:
   # needed by the devcontainer
-  vscode:
+  # vscode:

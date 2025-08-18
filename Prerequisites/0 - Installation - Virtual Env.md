@@ -1,3 +1,5 @@
+*me from 2025: this is outdated solution*
+
 # Table of Content
 
 0. [What and why?](#0-whatNwhy)

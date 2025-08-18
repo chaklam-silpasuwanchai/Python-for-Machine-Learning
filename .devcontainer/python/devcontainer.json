@@ -1,0 +1,40 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-outside-of-docker-compose
+{
+	"name": "ml-python",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "ml-python",
+	"overrideCommand": true,
+    // "runServices": ["frontend", "traefik"],
+	"workspaceFolder": "/Projects/Python-for-Machine-Learning",
+    "remoteUser": "ubuntu",
+    "updateRemoteUserUID": true,
+	"shutdownAction": "stopCompose",
+	// Use this environment variable if you need to bind mount your local source code into a new container.
+	"remoteEnv": {
+		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+	},
+
+	"features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.black-formatter",
+				"michelemelluso.gitignore",
+				"ms-python.mypy-type-checker",
+				"ms-python.vscode-pylance",
+				"ms-python.python",
+				"yzhang.markdown-all-in-one",
+				"ms-toolsai.jupyter"
+			]
+		}
+	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "bash /start.sh"
+}

@@ -1,0 +1,9 @@
+services:
+  ml-python:
+    image: ml-python
+    build:
+      context: .
+      dockerfile: dockerfile
+    platform: linux/amd64
+    volumes:
+      - ../../:/Projects/Python-for-Machine-Learning

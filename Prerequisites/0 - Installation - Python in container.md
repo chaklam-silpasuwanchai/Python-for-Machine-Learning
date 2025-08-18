@@ -1,22 +1,58 @@
-# Goal
-We will guide you how we setup our PC ready for machine learning using Docker and Github.
 
-My setup consists of
-1. Windows 11 home (Operating System)
-2. Docker Desktop + WSL2 (App)
-3. Visual Code Studio (Text Editor)
-4. GitHub Desktop
+- [1. Goal](#1-goal)
+  - [1.1. Set Up](#11-set-up)
+- [2. Python](#2-python)
+  - [2.1. What is Python?](#21-what-is-python)
+  - [2.2. Why uses Python?](#22-why-uses-python)
+  - [2.3. Before you start](#23-before-you-start)
+- [3. Container technology](#3-container-technology)
+  - [3.1. What/Why?](#31-whatwhy)
+  - [3.2. Installation](#32-installation)
+    - [3.2.1. Windows](#321-windows)
+- [4. Visual Studio Code (vscode)](#4-visual-studio-code-vscode)
+- [5. Docker](#5-docker)
+  - [5.1. What is Docker?](#51-what-is-docker)
+  - [5.2. Base Image](#52-base-image)
+  - [5.3. Customizing Image](#53-customizing-image)
+  - [5.4. Build](#54-build)
+  - [5.5. Create a container](#55-create-a-container)
+  - [5.6. Tedious?](#56-tedious)
+- [6. Docker Compose](#6-docker-compose)
+- [7. Using our Python container](#7-using-our-python-container)
+  - [7.1. `Remote - Containers` method](#71-remote---containers-method)
+  - [7.2. `.Devcontainer`](#72-devcontainer)
+- [8. Ensure the migration (Bonus)](#8-ensure-the-migration-bonus)
+  - [8.1. Buy a new machine](#81-buy-a-new-machine)
+  - [8.2. Python Environment](#82-python-environment)
+    - [8.2.1. Put it in the .Dockerfile](#821-put-it-in-the-dockerfile)
+    - [8.2.2. Use virtual environment](#822-use-virtual-environment)
+  - [8.3. Your code](#83-your-code)
+    - [8.3.1. GIT](#831-git)
+    - [8.3.2. GitHub](#832-github)
+  - [8.4. Your data](#84-your-data)
+  - [8.5. Execution](#85-execution)
+  - [8.6. GitHub Desktop](#86-github-desktop)
+  - [8.7. Gitignore](#87-gitignore)
+  - [8.8. Publishing the repository](#88-publishing-the-repository)
+  - [8.9. Syncing and Collaborating](#89-syncing-and-collaborating)
+  - [8.10. What else?](#810-what-else)
 
-# Table of Content
+# 1. Goal
+The goal here is to has a Python environment that is providion from Docker container.
 
-0. [What and Why](#0-whatNwhy)
-1. [Docker](#1-docker)
-2. [Visual Studio Code](#2-vscode)
-3. [Docker Compose](#3-docker-compose)
-4. [Using Python](#4-using-python)
-5. [Ensure the migration](#5-ensure-migration)
-# <a name="0-whatNwhy"></a>0. What and Why
-### What is Python? 
+
+## 1.1. Set Up
+1. Any relatively modern laptop/PC with at least 8 GB
+   - Windows 10/11: Intel/AMD-based is preferred
+   - macOS: Apple Silicon-based CPU is preferred
+   - Ubuntu/Other linux: Good luck. You are on your own.
+2. Internet
+3. VSCode that installs according to your OS. [link](https://code.visualstudio.com/)
+
+
+# 2. Python
+
+## 2.1. What is Python? 
 [quote](https://www.w3schools.com/python/python_intro.asp)
 
 > Python is a popular programming language. It was created by Guido van Rossum, and released in 1991.
@@ -28,7 +64,7 @@ My setup consists of
 > - mathematics,
 > - system scripting.
 
-### Why uses Python?
+## 2.2. Why uses Python?
 [quote](https://www.w3schools.com/python/python_intro.asp)
 > - Python works on different platforms (Windows, Mac, Linux, Raspberry Pi, etc).
 > - Python has a simple syntax similar to the English language.
@@ -36,28 +72,40 @@ My setup consists of
 > - Python runs on an interpreter system, meaning that code can be executed as soon as it is written. This means that prototyping can be very quick.
 > - Python can be treated in a procedural way, an object-orientated way or a - functional way.
 
-### Before you start
-1. There are two major versions of Python which are Python2 and Python3. Note that when you call `python` in your terminal, you are referring to Python2. Instead, you need to explicitly call `python3` to use Python version 3.
-2. There are some differences in syntax the two versions. We are recommended that you use version 3 throughout the course.
+## 2.3. Before you start
+1. There are two major versions of Python, which are `Python2` and `Python3`. You must be aware of which major/minor version you are using.
+2. There are some differences in syntax between the two versions. We recommend that you use version 3 throughout the course.
 
-# <a name="1-docker"></a>1. Docker
-## Why?
-To me, I want my machine/PC/laptop to be as clean as possible because I use my laptop for my daily routine, games, hobbies, and works. In addition, how can I make sure that I can easily switch to a new machine and continue working.
+# 3. Container technology
 
-Previously, my go-to solution was to use Virtual Machine (VM). It was a great experience in many aspects, especially, migrating and backing up works. However, VMs can not access hardware and this limitation alone is a dealbreaker for anyone who wants to work with Deep Learning.
+## 3.1. What/Why?
 
-Now that Windows-subsystem-for-Linux (WSL2) is so great and convenient of managing environment of Docker, I never look back.
+There are many reasons why we should use containerization technology.
+At the core of `container`, it is a virtualization. 
+To the user, it looks like there is another computer running inside their computer. 
+That `computer` running inside is virtualized, which is just software; thus, we can simply build/rebuild/discard this virtualized computer at any time we want.
 
-## Installation
+What does this mean to you?
 
-The easiest to get a Docker running in your machine is through Docker Desktop. <a href="https://www.docker.com/products/docker-desktop/">link</a>
+Reproducible is probably the correct word to use. 
+When you use your computer for development, you will install this/that/those over time. 
+If your computer is suddenly broken, how long do you need to take in order to get back on track again?
+If you are afraid of this, it means your development is tied closely to your machine. 
+We want to decouple your project from the machine.
+If we achieved that, the time it takes for you to get back on track should be just to buy a new computer and rebuild the `virtualized computer`.
 
-Note that for `Linux` users, the last time I tried Docker Desktop on Linux, it was not working properly. It might have change. I don't know.
+`Docker` is one of, if not the most famous, container solutions. 
+It is free for non-commercial use, and it is widely adopted.
 
-Note for `MacOS` users, good luck. (I am a Windows enthusiast)
+## 3.2. Installation
 
-Now, for `Windows` users.
-*This guide assumes you have a fresh installation of Windows*
+The easiest way to get `Docker` running in your machine is through [`Docker Desktop`](https://www.docker.com/products/docker-desktop/).
+
+There are many great tutorials available online to help you with the installation process.
+
+### 3.2.1. Windows
+
+*I happen to write this guide since I was a Windows user (since 2020). So take this with a grain of salt.*
 
 1. Install the `Docker Desktop` from <a href="https://www.docker.com/products/docker-desktop/">link</a>
 2. Once the installation is done you may need to restart your OS.
@@ -70,7 +118,7 @@ Now, for `Windows` users.
   docker-desktop         Running         2
 ```
 This command shows you the kernel and version. If you are not going to use WSL anymore, this is all we need.
-5. Launch `Docker Desktop` again.
+1. Launch `Docker Desktop` again.
 
 ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/docker-desktop.png)
 
@@ -80,72 +128,91 @@ If you take a look in the `Task Manager`, there is a process named `Vmmem` runni
 ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/vmmem.png)
 
 
-# <a name="2-vscode"></a>2. Visual Studio Code (vscode)
+# 4. Visual Studio Code (vscode)
 
-Code is simply a text. This means you can write a code with any text editor in the world, including Notepad. That is doable until you have to write a bigger project with many module plus libraries. At this stage, having some help would be nice. 
+Code is simply a text. 
+This means you can write code with any text editor in the world, including Notepad. 
+That is doable until you have to write a bigger project with many modules plus libraries. 
+At this stage, having some help would be nice. 
 
-Here come the Integrated Development Environment (IDE), 
+Here comes the `Integrated Development Environment (IDE)`.
 
 [quote](https://en.wikipedia.org/wiki/Integrated_development_environment)
 > a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. Some IDEs, such as NetBeans and Eclipse, contain the necessary compiler, interpreter, or both; others, such as SharpDevelop and Lazarus, do not.
 >
 > The boundary between an IDE and other parts of the broader software development environment is not well-defined; sometimes a version control system or various tools to simplify the construction of a graphical user interface (GUI) are integrated. Many modern IDEs also have a class browser, an object browser, and a class hierarchy diagram for use in object-oriented software development.
 
-In my words, in order to enjoy developing code more, a good code developing software is a must, otherwise, you will spend more time fixing basic bug than creating a magic.
+In my words, in order to enjoy developing code more, a good code development software is a must; otherwise, you will spend more time fixing basic bugs than creating magic.
 
 Basic bug??
 
-Yes, basic bug, such as syntax error, wrong variable name, undefined blah blah blah. basic bugs.
-
+Yes, basic bugs, such as syntax errors, wrong variable name, undefined blah blah blah. Basic bugs.
 These are avoidable or, at least, can be mitigated by using a better editor.
 
-In Python, you can use `PyCharm` <a href="https://www.jetbrains.com/pycharm/">link</a> for the ultimate Python experience. However, this only support Python. As I told you earlier, I like to keep my machine as clean as possible. Therefore, if I want to write other languages, I will have to install another IDE for that.
-
-Enter `Visual Studio Code` <a href="https://code.visualstudio.com/">link</a>. To define VScode, it is difficult. 
+Enter `Visual Studio Code`. 
+To define VScode, it is difficult. 
 
 [quote](https://en.wikipedia.org/wiki/Visual_Studio_Code)
 >Visual Studio Code, also commonly referred to as VS Code,[9] is a source-code editor made by Microsoft for Windows, Linux and macOS.[10] Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git. Users can change the theme, keyboard shortcuts, preferences, and install extensions that add additional functionality.
 >
 >In the Stack Overflow 2021 Developer Survey, Visual Studio Code was ranked the most popular developer environment tool, with 70% of 82,000 respondents reporting that they use it.[11]
 
-In my words, it is a versatile code editor. It used to be lightweight, and it will somehow is when compare to other IDE. With an extension, it can adapt to any languages. And VScode can feel like a complete IDE with its ability to integrate with Terminal and Docker.
+In my words, it is a versatile code editor. 
+From a fresh installation, it is pretty lightweight.
+The amazing thing about VSCode is the `Extension`.
+It lets VSCode adapt itself to whatever you want it to be (and it starts to not be lightweight here LOL).
 
-Enough said, download the VScode now. https://code.visualstudio.com/
 
-# <a name="3-docker-compose"></a>3. Docker Compose
+# 5. Docker
 
-Let's get back to Docker because we only install it without learning about it.
+Let's get back to `Docker` because we only install it without learning about it.
 
-Do we really need to understand Docker before we can use it? No. Should we? Yes.
+Do we really need to understand `Docker` before we can use it? No. But should we? Yes.
 
-## What is Docker?
+## 5.1. What is Docker?
 
 [quote](https://en.wikipedia.org/wiki/Docker_(software))
 >Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. The service has both free and premium tiers. The software that hosts the containers is called Docker Engine. It was first started in 2013 and is developed by Docker, Inc. Wikipedia
 
-The key is `virtualization`. It is a form of simulation just like VM but instead of emulating the entire machine, it is only simulating kernels. In a more basic word, I can have Ubuntu 20.04, 18.04, 16.04, CentOS, Redhat, and MacOS running on my Windows. It does not end here, instead of running just a bare bone OS, it can also be pre-installed application. Thus mean, I can run MySQL, PostgreSQL, Reddis, Java, Python, C#, C++, Golang, ... in just a matter of minutes. **Using Docker will shorten installation steps and ensure that anyone who use the same image will have the same environment.**
+The key is `virtualization`. 
+It is a form of simulation just like VM, but instead of emulating the entire machine, it only simulates kernels. 
+In a more basic word, I can have Ubuntu 20.04, 18.04, 16.04, CentOS, and Red Hat running on my Windows/Mac. 
+It does not end here; instead of running just a bare-bones OS, it can has an application pre-installed. 
+This means I can run MySQL, PostgreSQL, Redis, Java, Python, C#, C++, Golang, ... in just a matter of minutes. 
+**Using Docker will shorten installation steps and ensure that anyone who uses the same image will have the same environment.**
 
-Wow, that simply the same benefit as VM but no, Docker is not VM as it does not emulate hardware. Instead, Docker sees all of your hardware. That is why we can use GPU.
+Wow, that's simply the same benefit as VM, but no, Docker is not a VM, as it does not emulate hardware. 
+Instead, Docker sees all of your hardware. 
+This comes with both pros and cons. 
+We can discuss this elsewhere.
 
-In Docker, `Docker image` and `Container` are the two confusing words for newcomer. To understand this, let's think how did we install Windows on a fresh machine.
+In Docker, `Docker image` and `Container` are two confusing words for a newcomer. 
+To understand this, let's think about how we install Windows on a fresh machine.
 
-1. Download ISO and create bootable USB
+1. Download ISO and create a bootable USB
 2. Install Windows 
-3. Configure and install software we want to use
-4. If the PC crash, we restart it.
+3. Configure and install the software we want to use
+4. If the PC crashes, we restart it.
 5. If the PC is broken, we reinstall it and repeat from step 2.
 
-For Docker, if you want to have Ubuntu 20.04 we do the followings:
+For Docker, if you want to have Ubuntu 24.04, we do the following:
 
-1. Download Docker Image of Ubuntu 20.04.
-2. Run the image. Thus, we have a container that runs Ubuntu 20.04. 
-3. We install the software we wanted to use.
-4. If we stop the container, we can start is to resume use it.
-5. If we destroy the container, we have to recreate it thus repeat from step 2.
+1. Download the Docker Image of Ubuntu 24.04.
+2. Run the image. It yields a container that runs Ubuntu 24.04. 
+3. We install the software we want to use.
+4. If we stop the container, we can start to restart it.
+5. If we destroy the container, we have to recreate it, thus repeat from step 2.
 
-There for, `Docker Image` is what we want to start with and `Container` is an instance of what we start. This means you can create multiple Ubuntu 20.04 containers that consist of different software for different purpose, hence reduce the chance of library conflict.
+Therefore, `Docker Image` is what we want to start with, and `Container` is an instance of what we start. 
+This means you can create multiple Ubuntu 24.04 containers that consist of different software for different purposes, hence reducing the chance of library conflicts.
 
-The main different between Docker and VM is the user see a container as a process not an instance. Therefore, the container is deletable. In fact, a container is not expecting to exist forever and is not a thing you have to manage. This causes one feature of Docker, we can always build a new image, and we are expecting to do so.
+While it is true that we can use Docker as a VM solution (create the container and install the software that we want to use), we often want the container to do just one thing.
+If you want to run a Web Application, the container should start and right away serve the web. 
+Because of this practice, we create an image for each project separately.
+Thus, every project environment is isolated because they are simply running in a separate virtualized environment.
+
+This means you, the developer, have to create the `Docker Image` of your project.
+And if you do it correctly, the image can be built/rebuilt and your project will still be functioning not only on your computer but anywhere. 
 
 Here is the summary and simple workflow of Docker.
 
@@ -153,22 +220,25 @@ Here is the summary and simple workflow of Docker.
 Base Image -> *customize* *build* -> My Image -> *run* -> container
 ```
 
-For our purpose, we want to use Python and some library like `numpy` and `pandas` on Ubuntu 20.04, then here is what we will do next.
+For our purpose, we want to use Python and some libraries like `numpy` and `pandas` on Ubuntu 24.04, then here is what we will do next.
 
 ```
-Ubuntu 20.04 -> *customize* *build* -> Python Image-> *run* -> Python Container
+Ubuntu 24.04 -> *customize* *build* -> Python Image -> *run* -> Python Container
 ```
 
-Sure you can find the base image with Python3 but for the sake of knowledge, we will proceed with my plan.
+Sure, you can find the base image with Python3, but for the sake of learning, we will proceed with my plan.
 
 
-## Base Image
-To find what you want to start with, you have to search from the <a href="https://hub.docker.com/">Docker Hub</a>. Simply search for Ubuntu and find what you want. Here is the <a href="https://hub.docker.com/_/ubuntu">Ubuntu official Image</a>. 
+## 5.2. Base Image
+
+To find what you want to start with, you have to search from the [DockerHub](https://hub.docker.com). 
+Simply search for Ubuntu and find what you want. Here is the [Ubuntu official Image](https://hub.docker.com/_/ubuntu).
 
 ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/docker-hub-ubuntu.png)
 
 If you just want an Ubuntu image, 
-```
+
+```sh
 docker pull ubuntu
 ```
 
@@ -176,92 +246,96 @@ But we want a specific version of Ubuntu. Click `Tags`.
 
 ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/docker-hub-ubuntu-tags.png)
 
-```
+```sh
 docker pull ubuntu:<tag>
 ```
 
-Tag is a section to specific the version and to find what version we want, we have to do some research and read the Description of each image provider. For our goal, we will use the following command.
-```
-docker pull ubuntu:20.04
+Tag is a section to specify the version we want. 
+What version do you want? That is where you need to read and research.
+But now I want Ubuntu 24.04.
+
+*Note: Since an image is simply an application. Some image has a specific way to use. You must read the manual/description in order to use them correctly.*
+
+```sh
+docker pull ubuntu:24.04
 ```
 
 Okay, so run the command? What is this `pull` command anyway?
 
-Pull is to download the image in to your computer, but you don't really need to do that since Docker, when build/run, will `pull` automatically when the image is not found on the machine.
+Pull is to download the image into your computer, but you don't really need to do that since Docker, when built/run, will `pull` automatically when the image is not found on the machine.
 
 For now, we remember the image name and continue with customizing.
 
-## Custom Image
+## 5.3. Customizing Image
 
-To customize the image we have to create a `.Dockerfile` file. 
+To customize the image we have to create a `Dockerfile` file. 
 
-```
-FROM ubuntu:20.04
+```docker
+FROM ubuntu:24.04
 WORKDIR /root/projects
 RUN apt update && apt upgrade -y
 RUN apt install python3 python3-pip -y
 CMD tail -f /dev/null
 ```
 
-`FROM` will use the `ubuntu:20.04` as a base image. `WORKDIR` is like `cd`, but it will also create a folder when the path is not exist. `RUN` will execute the command in terminal. And, `CMD` is what will the container do (remember that it is designed to be a process for one purpose).
+- `FROM`: will use the `ubuntu:24.04` as a base image. 
+- `WORKDIR`: is like `cd`, but it will also create a folder when the path does not exist.
+- `RUN`: will execute the command in the terminal. 
+- And, `CMD`: is what the container will do (remember that it is designed to be a process for one purpose).
 
-## Build 
+## 5.4. Build 
 
-We can build the image from `.Dockerfile` using the following command.
-```
+We can build the image from a `Dockerfile` using the following command.
+
+```sh
 docker build .
 ```
 
-## Create container
+## 5.5. Create a container
 
 Once we have the image that we want to use, we will create a container (which is an instance of the image) using the following command.
 
-```
+```sh
 docker run IMAGE[:TAG|@DIGEST]
 ```
 
 and now we have the container.
 
 
-## Tedious?
-One this that does not appeal to me is a bunch of command I have to remember in order to create a container. We have not yet open the port, mapping volume, assign hardware, and limit the resources. That are a bunch of option we have to specify in the `run` command.
+## 5.6. Tedious?
 
-Now we will be more civilize and use `Docker Compose`
+One thing that does not appeal to me is a bunch of commands I have to remember in order to create a container. 
+We have not yet opened the port, mapped the volume, assigned hardware, or limited the resources. 
+There are a bunch of options we have to specify in the `run` command.
 
-## Docker Compose
-In a nutshell, docker-compose help you to craft your `run` command in the `yml` format. In addition, the docker-compose helps to manage multiple containers when your app consists of multiple services. 
+Now, we will be more civilized and use `Docker Compose`
 
-In our case, we will use it in place of `docker run` command.
+# 6. Docker Compose
+
+In a nutshell, Docker Compose helps you craft your `run` command in the `yml` format. 
+In addition, Docker Compose helps to manage multiple containers when your app consists of multiple services. 
+
+In our case, we will use it in place of the `docker run` command.
 
 Create a file `docker-compose.yml`
 
-```
+```yml
 version: '3.9'
 services:
   python: # service/container name
     image: python # image name
     build: 
       context: .
-      dockerfile: .Dockerfile
+      dockerfile: dockerfile
 ```
 
-Now, normally you will have to use `docker-compose up blah blah` to run the service. Here, I will use `VScode` to start the service. Before that, go to `Extension` and install `docker` extension into your `VScode`.
+Now, instead of doing all those `docker <this/that/those>`, you just run `docker compose up`.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/vscode-docker-ext.png)
+# 7. Using our Python container
 
-Once you installed this extension, find your `docker-compose.yml` file, right click, and `Compose up`
+## 7.1. `Remote - Containers` method
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Machine-Learning/master/.0%20-%20installation_image/vscode-docker-compose-up.png)
-
-## Summary
-Now, all we have to do to get the container is
-
-1. create `.Dockerfile`
-2. create `docker-compose.yml`
-3. Compose up
-
-
-# <a name="4-using-python"></a>4. Using Python
+*I want to say it is obsolete but the truth is it still works quite well for accessing containers.*
 
 Now, we want to access the Python in the container using VSCode. Luckily, things are already simplified. We have to install `Remote - Containers` extension in VSCode.
 
@@ -274,8 +348,18 @@ Once we installed that, we can go to Docker menu, right-click on the target cont
 
 Now we have Python running. You are ready for this course.
 
+## 7.2. `.Devcontainer`
 
-# <a name="5-ensure-migration"></a>5. Ensure the migration
+The amazing `.devcontainer` folder allows you to define your development environment in a more granular way. 
+You can specify the exact tools, libraries, and settings you need for your project, and VSCode will automatically set up the container for you.
+
+*I don't have time to write this down, so I skip. 
+I show this in class; if you are missing the class, you can still find this knowledge online. 
+Good luck!.*
+
+# 8. Ensure the migration (Bonus)
+
+*Me from 2025: I just realized how much effort I put into this. The latter part is not relevant, but it is still a good read. Therefore, I left them untouched.*
 
 As said in the beginning, my goal is to have as clean as possible set up and easily migrating to new machine. For the past topics, we have achieved **clean set up**. When you want to work, you start Docker, start container, and code. When you are finished, you close everything and kill the **vmmem** process. No process is hogging your resources. Finally, when you are done with any project, you just delete Docker image and destroy containers. **Clean~~!!**
 
@@ -288,11 +372,11 @@ First, let's decompose the project into components. What does it need in order t
 3. Your code: ...
 4. Your data: ...
 
-## 1. Buy a new machine
+## 8.1. Buy a new machine
 
 Surely, if the current machine is broken, get a new one. Set up Docker and VScode, and we are half way there.
 
-## 2. Python Environment
+## 8.2. Python Environment
 
 Currently, our `.Dockerfile` has Python3. Along the course of development, you will surely need other library such as `numpy` and `pandas`. So, when we are migrating to another machine, we have to have these libraries too.
 
@@ -307,7 +391,7 @@ CMD tail -f /dev/null
 
 This means there are no libraries when we build and run the image. Sure, once the container is initiated, you can run `pip3 install` inside the container to get library and never destroy your container. But we are planning for **Machine is gone** scenario, so there are ways you can ensure your container will have the libraries it needs.
 
-### 2.1 Put it in the .Dockerfile
+### 8.2.1. Put it in the .Dockerfile
 
 You can specify the list of libraries you need in the `.Dockerfile`. This way, every time you build the image, it will always have the libraries. The only downside is you have to keep track of the libraries you are using in the project and put it in the `.Dockerfile`.
 
@@ -321,7 +405,7 @@ RUN pip3 install pandas
 CMD tail -f /dev/null
 ```
 
-### 2.2 Use virtual environment
+### 8.2.2. Use virtual environment
 
 Virtual Environment is a concept of managing project-level environment. Before the existing of Docker, when you are developing multiple projects and want to ensure conflict free, you use virtual environment. We do not need it in the Docker since we should build one image for one project, but that does not mean there is no benefit of virtual environment when paring with container set up.
 
@@ -360,7 +444,7 @@ services:
 
 There are couples of virtual environment module for Python. I use `pipenv` for its ability to create Pipfile (list of libraries) for me automatically.
 
-## 3. Your code
+## 8.3. Your code
 
 If the machine is broken, you may be able to retrieve the code in the HDD/SSD. But, what if the HDD/SSD is also destroyed? Then you would need to have a second copy of your code somewhere else. Here we talk about backup. You will have multiple options and workflows to choose. You might save your code in the Google Drive, OneDrive, and other Drive from other cloud storage provider. You might have your own USB drive and remember to copy the code to the Drive. All of above are fine. However, I want to introduce you to Git and GitHub.
 
@@ -371,21 +455,21 @@ Here is my analogy.
 
 The two things are similar in managing/hosting/publishing a bunch of objects. However, the similarity end there, but it is good to know some term and compare to the known word.
 
-### GIT
+### 8.3.1. GIT
 Git is a protocol. It solves the problem of *versioning*. When you have a project, you want to create one repository for that project. Within the repository, Git will **keep track of the changes** and save each change in a node and form a tree. Each node called `commit`. You can have multiple branches (tree) and merge branches to sync up the changes. Because it keeps track of the changes, you can always go back in history for referencing, or even revert the entire project the previous version (back to the future~~).
 
-### GitHub
+### 8.3.2. GitHub
 GitHub is a website that support Git protocol. You can sync up your local repository with the remote (repo in the GitHub) via the Git protocol. This enables easy collaborating with peers and backup.
 
 Now, if you use GitHub, you code + .Dockerfile + docker-compose.yml + Pipfile can all be saved to GitHub. This means if you have to migrate the project, it just a simple pull from the GitHub.
 
 Great, this mean no more manually backup? Sadly, no. GitHub has a limit of how big your file can be uploaded. (Git can keep track of any file size, but GitHub disallowed the big file to be uploaded). Thus means you can not upload your Data to the GitHub and you need to manually back up yourself.
 
-## 4. Your data
+## 8.4. Your data
 
 Well, manually back up your data. A database, dataset, and other binary files are usually discarded from GitHub repository. You can use OneDrive and Google Drive to back up these data.
 
-## Execution
+## 8.5. Execution
 
 Here our plan is to put everything into GitHub except some confidential/big data. Our repository will look like this.
 
@@ -427,7 +511,7 @@ services:
 
 Now, how do we initiate Git in our local machine?, and sync this repository with GitHub? If you have never used Git before, my suggestion would be to install GitHub Desktop. What I am about to show you will be hated by Git enthusiast around the world and many hardcore Git users will always say "use the command line is a must" which is true in some situations (also applied to Docker). Eventually, you should learn how to use Git in the command line/terminal environment. However, for all people who are not familiar with terminal environment, it usually scared them of. Moreover, in a daily basis, I would spend my time writing code rather than recalling the command for Git's routine. Not to mention that I have to install Git for Windows to have the Git command in my machine.
 
-## GitHub Desktop
+## 8.6. GitHub Desktop
 
 Visit <a href="https://desktop.github.com/">GitHub Desktop</a> and download the installer according to your operating system. After all the installation. You will have to have a GitHub account (well, we are about to upload and use GitHub service). Therefore, visit <a href="https://github.com/">GitHub</a> and create yourself an account. Here I would suggest you to create your own personal account using your **personal email address**. Nowadays, GitHub has become another way for the company to know you. Then, to get **GitHub Pro** plan, you have to bind AIT email address once you have created your account.
 
@@ -525,7 +609,7 @@ DSAI-python
 |--docker-compose.yml
 ```
 
-## Gitignore
+## 8.7. Gitignore
 
 If we go back to the GitHub Desktop, we will notice that GitHub Desktop already commit one change with message "Initial commit" and in the commit, our `Dataset` has already *added* into the repository. For my purpose, we want to exclude this from the repository.
 
@@ -609,7 +693,7 @@ DSAI-python
 
 Note that this will not work with any file that is already added to repository. You can only ignore files that is not included in the repository only. If you make a mistake and want to ignore a file after many commits, there is a way and I will leave it to you to figure it out.
 
-## Publishing the repository
+## 8.8. Publishing the repository
 
 Now you have a repository running in your local machine. You can make changes and create commits or make a new branch and merge as many as you desire. When you are ready, you can publish this repository to GitHub. To do that, click `Publish repository`.
 
@@ -617,7 +701,7 @@ Now you have a repository running in your local machine. You can make changes an
 
 Here you can change the name of the repository (this will not affect the folder name in your local machine) and an option whether to make this repository a private or not. Once done choosing, just click `Publish repository`. Done~~!!
 
-## Syncing and Collaborating
+## 8.9. Syncing and Collaborating
 
 Now, you have two repositories (local and remote/GitHub), and you wish that both repositories will look the same. To achieve you have to push and pull. Here is a diagram.
 
@@ -638,7 +722,7 @@ Now, if you have a second machine or your friend are also working on the same pr
 
 In summary, you will have to push and pull consistently to make sure that both repositories are in sync.
 
-## What else?
+## 8.10. What else?
 
 There is no rule in GitHub. There is only `main` branch and other branches. The meaning of branch is up to you and your team.
 
